@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 routes.registerRoutes(app);
 
-var server = http.createServer(app).listen(9944);
+var server = http.createServer(app).listen(8080);
 
 module.exports = server;
 
