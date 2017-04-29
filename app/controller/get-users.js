@@ -10,6 +10,7 @@ var JSONStream = require('JSONStream');
 module.exports = {
 
     getUsers: function (req, res) {
+        console.log("in get users");
         MongoClient.connect(mongoUrl, function (err, db) {
             assert.equal(null, err);
             getUsers(db, function () {

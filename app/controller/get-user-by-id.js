@@ -8,6 +8,7 @@ var assert = require('assert');
 module.exports = {
 
     getUserByID: function (req, res) {
+        console.log("in get user by id");
         MongoClient.connect(mongoUrl, function (err, db) {
             assert.equal(null, err);
             getUserbyId(req.param('id'), db, function () {

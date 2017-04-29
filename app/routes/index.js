@@ -11,5 +11,6 @@ module.exports = {
         app.post('/set_user', setUser);
         app.get('/get_users', getUsers);
         app.get('/get_user_by_id', getUserByID);
+        console.log("registered routes");
     }
 };
