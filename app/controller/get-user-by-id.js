@@ -1,5 +1,5 @@
 /**
- * Created by avinash on 4/6/17.
+ * Created by avinash on 4/30/17.
  */
 
 var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';

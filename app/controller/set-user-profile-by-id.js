@@ -4,12 +4,12 @@
 
 var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
 
-    setUser: function(req, res) {
+    setUserProfileById: function(req, res) {
 
-        console.log('data'+ req.body.Key);
         MongoClient.connect(mongoUrl, function (err, db) {
 
             if (err) {
@@ -31,15 +31,19 @@ module.exports = {
 
         var insertDocument = function (db, data, callback) {
             console.log('into insert doc function');
-            db.collection('user_list').insertOne(data, function (err, result) {
-                console.log('into db insertion');
+            console.log(data);
+            var string = JSON.stringify(data);
+            var objectValue = JSON.parse(string);
+            var id = objectValue['id'];
+            console.log(id);
+            db.collection('user_profile').update({ 'id':id}, data, function(err, result) {
                 if (err) {
                     res.status(500).json({
                         message: 'Failed to add in DB!!'
                     });
                 }
                 callback();
-            })
+            });
         }
     }
 };

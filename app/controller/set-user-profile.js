@@ -1,5 +1,5 @@
 /**
- * Created by avinash on 4/30/17.
+ * Created by avinash on 4/29/17.
  */
 
 var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
@@ -7,7 +7,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 module.exports = {
 
-    setUser: function(req, res) {
+    setUserProfile: function(req, res) {
 
         console.log('data'+ req.body.Key);
         MongoClient.connect(mongoUrl, function (err, db) {
@@ -31,7 +31,7 @@ module.exports = {
 
         var insertDocument = function (db, data, callback) {
             console.log('into insert doc function');
-            db.collection('user_list').insertOne(data, function (err, result) {
+            db.collection('user_profile').insertOne(data, function (err, result) {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
