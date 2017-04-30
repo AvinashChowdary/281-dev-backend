@@ -7,8 +7,9 @@ var setUserController = require("../controller/set-user");
 var getUsersController = require("../controller/get-users");
 var getUserByIDController = require("../controller/get-user-by-id.js");
 var setUserProfileController = require("../controller/set-user-profile.js");
-var setUserProfileByIDController = require("../controller/set-user-profile-by-id");
-var getUserProfileByIDController = require("../controller/get-user-profile-by-id");
+var setUserProfileByIDController = require("../controller/set-user-profile-by-id.js");
+var getUserProfileByIDController = require("../controller/get-user-profile-by-id.js");
+var createProjectController = require("../controller/create-project.js");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -16,5 +17,6 @@ router.get("/get_user_by_id", getUserByIDController.getUserByID);
 router.post("/set_profile", setUserProfileController.setUserProfile);
 router.post("/set_profile_by_id", setUserProfileByIDController.setUserProfileById);
 router.post("/get_profile_by_id", getUserProfileByIDController.getUserProfileByID);
+router.post("/create_project", createProjectController.createProject);
 
 module.exports = router;
