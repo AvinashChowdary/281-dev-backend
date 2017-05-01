@@ -17,6 +17,8 @@ var deleteProjectController = require("../controller/delete-project.js");
 var getAllProjects = require("../controller/get-all-projects.js");
 var createCustomer = require("../controller/create-customer.js");
 var updateCustomer = require("../controller/update-customer.js");
+var setDeletePostController = require("../controller/set-delete-post");
+var getAllPostsController = require("../controller/get-all-posts");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -32,5 +34,7 @@ router.post("/delete_project", deleteProjectController.deleteProject);
 router.get("/get_all_projects", getAllProjects.getAllProjects);
 router.post("/create_customer", createCustomer.createCustomer);
 router.post("/update_customer", updateCustomer.updateCustomer);
+router.post("/set_delete_post", setDeletePostController.setDeletePost);
+router.get("/get_all_posts", getAllPostsController.getAllPosts);
 
 module.exports = router;

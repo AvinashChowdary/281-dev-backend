@@ -1,0 +1,34 @@
+/**
+ * Created by mouni on 4/30/2017.
+ */
+
+var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var JSONStream = require('JSONStream');
+
+module.exports = {
+
+    getAllPosts: function (req, res) {
+        console.log("in get users");
+        MongoClient.connect(mongoUrl, function (err, db) {
+            assert.equal(null, err);
+            getPosts(db, function () {
+                db.close();
+            });
+        });
+
+        var getPosts = function (db, callback) {
+            var cursor = db.collection('post').find();
+            cursor.toArray(function (err, doc) {
+                assert.equal(err, null);
+                res.contentType('application/json');
+                res.write(JSON.stringify(doc));
+                res.end();
+            });
+
+            callback();
+        };
+
+    }
+};
