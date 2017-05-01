@@ -10,6 +10,7 @@ var setUserProfileByID = require("../routes/user-route");
 var getProfileByID = require("../routes/user-route");
 var createProject = require("../routes/user-route");
 var updateProject = require("../routes/user-route");
+var deleteProject = require("../routes/user-route")
 
 module.exports = {
     registerRoutes: function(app) {
@@ -21,6 +22,7 @@ module.exports = {
         app.post('/get_profile_by_id', getProfileByID);
         app.post('/create_project', createProject);
         app.post('/update_project', updateProject);
+        app.post('/delete_project', deleteProject);
         console.log("registered routes");
     }
 };

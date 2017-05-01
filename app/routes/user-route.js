@@ -11,6 +11,7 @@ var setUserProfileByIDController = require("../controller/set-user-profile-by-id
 var getUserProfileByIDController = require("../controller/get-user-profile-by-id.js");
 var createProjectController = require("../controller/create-project.js");
 var updateProjectController = require("../controller/update-project.js");
+var deleteProjectController = require("../controller/delete-project.js");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -20,5 +21,6 @@ router.post("/set_profile_by_id", setUserProfileByIDController.setUserProfileByI
 router.post("/get_profile_by_id", getUserProfileByIDController.getUserProfileByID);
 router.post("/create_project", createProjectController.createProject);
 router.post("/update_project", updateProjectController.updateProject);
+router.post("/delete_project", deleteProjectController.deleteProject);
 
 module.exports = router;
