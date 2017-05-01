@@ -9,6 +9,13 @@ var setUserProfile = require("../routes/user-route");
 var setUserProfileByID = require("../routes/user-route");
 var setCreatePost = require("../routes/user-route");
 var setUpdatePost = require("../routes/user-route");
+var getProfileByID = require("../routes/user-route");
+var createProject = require("../routes/user-route");
+var updateProject = require("../routes/user-route");
+var deleteProject = require("../routes/user-route");
+var getAllProjects = require("../routes/user-route");
+var createCustomer = require("../routes/user-route");
+var updateCustomer = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -19,6 +26,13 @@ module.exports = {
         app.post('/set_profile_by_id', setUserProfileByID);
         app.post('/set_create_post', setCreatePost );
         app.post('/set_update_post', setUpdatePost);
+        app.post('/get_profile_by_id', getProfileByID);
+        app.post('/create_project', createProject);
+        app.post('/update_project', updateProject);
+        app.post('/delete_project', deleteProject);
+        app.get('/get_all_projects', getAllProjects);
+        app.post('/create_customer', createCustomer);
+        app.post('/update_customer', updateCustomer);
         console.log("registered routes");
     }
 };
