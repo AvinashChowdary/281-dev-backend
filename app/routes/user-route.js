@@ -19,6 +19,8 @@ var createCustomer = require("../controller/create-customer.js");
 var updateCustomer = require("../controller/update-customer.js");
 var setDeletePostController = require("../controller/set-delete-post");
 var getAllPostsController = require("../controller/get-all-posts");
+var deleteCustomer = require("../controller/delete-customer.js");
+var getAllCustomers = require("../controller/get-all-customers.js");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -36,5 +38,7 @@ router.post("/create_customer", createCustomer.createCustomer);
 router.post("/update_customer", updateCustomer.updateCustomer);
 router.post("/set_delete_post", setDeletePostController.setDeletePost);
 router.get("/get_all_posts", getAllPostsController.getAllPosts);
+router.post("/delete_customer", deleteCustomer.deleteCustomer);
+router.get("/get_all_customers", getAllCustomers.getCustomers);
 
 module.exports = router;
