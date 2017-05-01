@@ -23,7 +23,7 @@ var deleteCustomer = require("../controller/delete-customer.js");
 var getAllCustomers = require("../controller/get-all-customers.js");
 var setNotificationController = require("../controller/set-notification");
 var getNotificationController = require("../controller/get-notification");
-
+var loginController = require("../controller/login");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -45,5 +45,6 @@ router.post("/delete_customer", deleteCustomer.deleteCustomer);
 router.get("/get_all_customers", getAllCustomers.getCustomers);
 router.post("/set_Notification", setNotificationController.setNotification);
 router.get("/get_Notification", getNotificationController.getNotification);
+router.post("/login", loginController.login);
 
 module.exports = router;

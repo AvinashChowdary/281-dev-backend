@@ -22,6 +22,7 @@ var deleteCustomer = require("../routes/user-route");
 var getAllCustomers = require("../routes/user-route");
 var setNotification = require("../routes/user-route");
 var getNotification = require("../routes/user-route");
+var login = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -46,6 +47,7 @@ module.exports = {
         app.get('/get_all_customers', getAllCustomers);
         app.post('/set_Notification', setNotification);
         app.get('/get_Notification', getNotification);
+        app.post('/login', login);
         console.log("registered routes");
     }
 };

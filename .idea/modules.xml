@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/281-dev-backend.iml" filepath="$PROJECT_DIR$/281-dev-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MongoDBSample.iml" filepath="$PROJECT_DIR$/MongoDBSample.iml" />
     </modules>
   </component>
 </project>

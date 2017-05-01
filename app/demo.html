@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rest API</title>
+
+</head>
+<body>
+<label><b style="color: white">Username</b></label>
+<input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+
+<label><b style="color: white">Password</b></label>
+<input id="pwd" type="password" placeholder="Enter Password" name="pwd" required>
+
+<button type="button" onclick="secureClicked()">Login</button>
+
+<button type="submit" onclick="usersClicked()">Get Users</button>
+
+</body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    function secureClicked() {
+        var uname = document.getElementById('uname').value;
+        var pwd = document.getElementById('pwd').value;
+        var obj = new Object();
+        obj.username = uname;
+        obj.password = pwd;
+        var userObj = JSON.stringify(obj);
+
+        xhr = new XMLHttpRequest();
+        var url = "http://127.0.0.1:9923/login";
+
+        xhr.onreadystatechange = function () {
+            if (xhr.status == 200) {
+                console.log(xhr.responseText);
+                var json = JSON.parse(xhr.responseText);
+                document.write(json.accesstoken);
+                onComplete(xmlhttp.responseText);
+            }
+        };
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhr.send(userObj);
+
+    }
+
+    function usersClicked() {
+        var response;
+        $.ajax({
+            url: 'http://127.0.0.1:9923/get_users',
+            type: 'GET',
+            dataType: 'jsonp',
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                response = data;
+                console.log(response);
+            }
+        });
+    }
+
+
+</script>
+</html>

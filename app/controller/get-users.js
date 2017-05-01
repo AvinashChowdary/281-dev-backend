@@ -23,6 +23,7 @@ module.exports = {
             cursor.toArray(function (err, doc) {
                 assert.equal(err, null);
                 res.contentType('application/json');
+                res.status(200);
                 res.write(JSON.stringify(doc));
                 res.end();
             });
