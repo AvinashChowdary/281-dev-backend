@@ -13,6 +13,7 @@ var createProjectController = require("../controller/create-project.js");
 var updateProjectController = require("../controller/update-project.js");
 var deleteProjectController = require("../controller/delete-project.js");
 var getAllProjects = require("../controller/get-all-projects.js");
+var createCustomer = require("../controller/create-customer.js");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -24,5 +25,6 @@ router.post("/create_project", createProjectController.createProject);
 router.post("/update_project", updateProjectController.updateProject);
 router.post("/delete_project", deleteProjectController.deleteProject);
 router.get("/get_all_projects", getAllProjects.getAllProjects);
+router.post("/create_customer", createCustomer.createCustomer);
 
 module.exports = router;

@@ -12,6 +12,7 @@ var createProject = require("../routes/user-route");
 var updateProject = require("../routes/user-route");
 var deleteProject = require("../routes/user-route");
 var getAllProjects = require("../routes/user-route");
+var createCustomer = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -25,6 +26,7 @@ module.exports = {
         app.post('/update_project', updateProject);
         app.post('/delete_project', deleteProject);
         app.get('/get_all_projects', getAllProjects);
+        app.post('/create_customer', createCustomer);
         console.log("registered routes");
     }
 };
