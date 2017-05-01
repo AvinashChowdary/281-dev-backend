@@ -7,6 +7,8 @@ var getUsers = require("../routes/user-route");
 var getUserByID = require("../routes/user-route");
 var setUserProfile = require("../routes/user-route");
 var setUserProfileByID = require("../routes/user-route");
+var setCreatePost = require("../routes/user-route");
+var setUpdatePost = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -15,6 +17,8 @@ module.exports = {
         app.get('/get_user_by_id', getUserByID);
         app.post('/set_profile', setUserProfile);
         app.post('/set_profile_by_id', setUserProfileByID);
+        app.post('/set_create_post', setCreatePost );
+        app.post('/set_update_post', setUpdatePost);
         console.log("registered routes");
     }
 };
