@@ -16,8 +16,12 @@ var deleteProject = require("../routes/user-route");
 var getAllProjects = require("../routes/user-route");
 var createCustomer = require("../routes/user-route");
 var updateCustomer = require("../routes/user-route");
+var setDeletePost = require("../routes/user-route");
+var getAllPosts = require("../routes/user-route");
 var deleteCustomer = require("../routes/user-route");
 var getAllCustomers = require("../routes/user-route");
+var setNotification = require("../routes/user-route");
+var getNotification = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -35,8 +39,13 @@ module.exports = {
         app.get('/get_all_projects', getAllProjects);
         app.post('/create_customer', createCustomer);
         app.post('/update_customer', updateCustomer);
+        app.post('/set_delete_post', setDeletePost);
+        app.post('/set_delete_post', setDeletePost);
+        app.get('/get_all_posts', getAllPosts);
         app.post('/delete_customer', deleteCustomer);
         app.get('/get_all_customers', getAllCustomers);
+        app.post('/set_Notification', setNotification);
+        app.get('/get_Notification', getNotification);
         console.log("registered routes");
     }
 };
