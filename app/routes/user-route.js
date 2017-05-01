@@ -12,6 +12,7 @@ var getUserProfileByIDController = require("../controller/get-user-profile-by-id
 var createProjectController = require("../controller/create-project.js");
 var updateProjectController = require("../controller/update-project.js");
 var deleteProjectController = require("../controller/delete-project.js");
+var getAllProjects = require("../controller/get-all-projects.js");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -22,5 +23,6 @@ router.post("/get_profile_by_id", getUserProfileByIDController.getUserProfileByI
 router.post("/create_project", createProjectController.createProject);
 router.post("/update_project", updateProjectController.updateProject);
 router.post("/delete_project", deleteProjectController.deleteProject);
+router.get("/get_all_projects", getAllProjects.getAllProjects);
 
 module.exports = router;
