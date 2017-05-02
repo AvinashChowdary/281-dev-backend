@@ -40,7 +40,7 @@ module.exports = {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
                 callback(result);
