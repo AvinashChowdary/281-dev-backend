@@ -43,7 +43,7 @@ module.exports = {
         app.post('/update_customer', updateCustomer);
         app.post('/set_delete_post', setDeletePost);
         app.post('/set_delete_post', setDeletePost);
-        app.get('/get_all_posts', getAllPosts);
+        app.post('/get_all_posts', getAllPosts);
         app.post('/delete_customer', deleteCustomer);
         app.post('/get_all_customers', getAllCustomers);
         app.post('/set_Notification', setNotification);

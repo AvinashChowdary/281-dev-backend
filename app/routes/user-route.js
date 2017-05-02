@@ -41,7 +41,7 @@ router.post("/get_all_projects", getAllProjects.getAllProjects);
 router.post("/create_customer", createCustomer.createCustomer);
 router.post("/update_customer", updateCustomer.updateCustomer);
 router.post("/set_delete_post", setDeletePostController.setDeletePost);
-router.get("/get_all_posts", getAllPostsController.getAllPosts);
+router.post("/get_all_posts", getAllPostsController.getAllPosts);
 router.post("/delete_customer", deleteCustomer.deleteCustomer);
 router.post("/get_all_customers", getAllCustomers.getCustomers);
 router.post("/set_Notification", setNotificationController.setNotification);
