@@ -15,15 +15,14 @@ module.exports = {
             if (err) {
                 console.log('into error of mongo');
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
-                    error: err
+                    error: 'err'
                 });
             }
 
             insertDocument(db, req.body, function () {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'User added to DB!!'
+                    result: 'success'
                 });
             });
 
@@ -36,10 +35,10 @@ module.exports = {
             var objectValue = JSON.parse(string);
             var id = objectValue['id'];
             console.log(id);
-            db.collection('project').update({ 'id':id}, data, function(err, result) {
+            db.collection('project').update({ 'project_id':id}, data, function(err, result) {
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
                 callback();

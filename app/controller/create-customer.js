@@ -20,10 +20,10 @@ module.exports = {
                 });
             }
 
-            insertDocument(db, req.body, function () {
+            insertDocument(db, req.body, function (result) {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'Project added to DB!!'
+                    tester_id: result._id
                 });
             });
 
@@ -31,14 +31,14 @@ module.exports = {
 
         var insertDocument = function (db, data, callback) {
             console.log('into insert doc function');
-            db.collection('customer').insertOne(data, function (err, result) {
+            db.collection('customer').insertOne(data, function (err) {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
-                callback();
+                callback(data);
             })
         }
     }
