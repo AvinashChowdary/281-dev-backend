@@ -18,9 +18,9 @@ module.exports = {
                 });
             }
 
-            insertDocument(db, req.body, function () {
+            insertDocument(db, req.body, function (result) {
                 res.status(200).json({
-                    message: 'User added to DB!!'
+                    post_id : result._id
                 });
             });
 
@@ -32,10 +32,10 @@ module.exports = {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error : err
                     });
                 }
-                callback();
+                callback(data);
             })
         }
     }
