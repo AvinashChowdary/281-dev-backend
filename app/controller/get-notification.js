@@ -27,7 +27,11 @@ module.exports = {
             console.log("in db querying");
             var cursor = db.collection('notification').find();
             cursor.toArray(function (err, doc) {
-                assert.equal(err, null);
+                if (err) {
+                    res.status(500).json({
+                        error: err
+                    });
+                }
                 console.log("no error in obtaining data from cursor");
                 res.contentType('application/json');
                 res.write(JSON.stringify(doc));

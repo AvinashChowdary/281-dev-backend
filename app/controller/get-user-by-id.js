@@ -24,6 +24,11 @@ module.exports = {
         var getUserbyId = function (id, db, callback) {
             var usersCollection = db.collection('user_list');
             usersCollection.findOne({id: id}, function (err, doc) {
+                if (err) {
+                    res.status(500).json({
+                        error: err
+                    });
+                }
                 res.contentType('application/json');
                 res.write(JSON.stringify(doc));
                 res.end();
