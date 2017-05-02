@@ -21,7 +21,7 @@ module.exports = {
             var string = JSON.stringify(body);
             var objectValue = JSON.parse(string);
             var id = objectValue['id'];
-            usersCollection.findOne({id: id}, function (err, doc) {
+            usersCollection.findOne({_id: id}, function (err, doc) {
                 res.contentType('application/json');
                 res.write(JSON.stringify(doc));
                 res.end();
