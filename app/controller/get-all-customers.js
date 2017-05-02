@@ -6,6 +6,8 @@ var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var JSONStream = require('JSONStream');
+var ObjectId = require('mongodb').ObjectID;
+
 
 module.exports = {
 
@@ -26,8 +28,8 @@ module.exports = {
         var getUsers = function (db, body, callback) {
             var string = JSON.stringify(body);
             var objectValue = JSON.parse(string);
-            var mgr_id = objectValue['manager_id'];
-            var cursor = db.collection('customer').find({manager_id : mgr_id});
+            var mgr_id = objectValue['project_id'];
+            var cursor = db.collection('customer').find({_id : ObjectId(mgr_id)});
             cursor.toArray(function (err, doc) {
                 if (err) {
                     res.status(500).json({
