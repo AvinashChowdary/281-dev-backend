@@ -15,7 +15,6 @@ module.exports = {
             if (err) {
                 console.log('into error of mongo');
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
                     error: err
                 });
             }
@@ -23,7 +22,7 @@ module.exports = {
             insertDocument(db, req.body, function () {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'Project deleted from DB!!'
+                    result: 'success'
                 });
             });
 
@@ -34,18 +33,19 @@ module.exports = {
             console.log(data);
             var string = JSON.stringify(data);
             var objectValue = JSON.parse(string);
-            var id = objectValue['id'];
+            var id = objectValue['project_id'];
             console.log(id);
-            db.collection('project', function(err, collection) {
-                if(err){
+            var collection = db.collection('project');
+
+            collection.deleteOne({_id: ObjectId(id)}, function (err, result) {
+                if (err) {
                     res.status(500).json({
-                        message: 'Failed to delete project in DB!!'
+                        error: err
                     });
-                } else {
-                    collection.deleteOne({id: id});
                 }
-                callback();
+                db.close();
             });
+            callback();
         }
     }
 };
