@@ -32,7 +32,7 @@ module.exports = {
             cursor.toArray(function (err, doc) {
                 if (err) {
                     res.status(500).json({
-                        message: 'failed'
+                        error: err
                     });
                 }
                 res.contentType('application/json');
