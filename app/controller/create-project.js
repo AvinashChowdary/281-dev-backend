@@ -20,10 +20,10 @@ module.exports = {
                 });
             }
 
-            insertDocument(db, req.body, function () {
+            insertDocument(db, req.body, function (result) {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'Project added to DB!!'
+                    result:'success'
                 });
             });
 
@@ -38,7 +38,7 @@ module.exports = {
                         message: 'Failed to add in DB!!'
                     });
                 }
-                callback();
+                callback(result);
             })
         }
     }

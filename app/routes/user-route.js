@@ -36,7 +36,7 @@ router.post("/get_profile_by_id", getUserProfileByIDController.getUserProfileByI
 router.post("/create_project", createProjectController.createProject);
 router.post("/update_project", updateProjectController.updateProject);
 router.post("/delete_project", deleteProjectController.deleteProject);
-router.get("/get_all_projects", getAllProjects.getAllProjects);
+router.post("/get_all_projects", getAllProjects.getAllProjects);
 router.post("/create_customer", createCustomer.createCustomer);
 router.post("/update_customer", updateCustomer.updateCustomer);
 router.post("/set_delete_post", setDeletePostController.setDeletePost);

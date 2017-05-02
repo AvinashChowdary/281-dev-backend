@@ -37,7 +37,7 @@ module.exports = {
         app.post('/create_project', createProject);
         app.post('/update_project', updateProject);
         app.post('/delete_project', deleteProject);
-        app.get('/get_all_projects', getAllProjects);
+        app.post('/get_all_projects', getAllProjects);
         app.post('/create_customer', createCustomer);
         app.post('/update_customer', updateCustomer);
         app.post('/set_delete_post', setDeletePost);

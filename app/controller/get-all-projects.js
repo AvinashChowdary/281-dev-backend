@@ -13,15 +13,22 @@ module.exports = {
         console.log("in get users");
         MongoClient.connect(mongoUrl, function (err, db) {
             assert.equal(null, err);
-            getUsers(db, function () {
+            getUsers(db, req.body, function () {
                 db.close();
             });
         });
 
-        var getUsers = function (db, callback) {
-            var cursor = db.collection('project').find();
+        var getUsers = function (db, body, callback) {
+            var string = JSON.stringify(body);
+            var objectValue = JSON.parse(string);
+            var mgr_id = objectValue['manager_id'];
+            var cursor = db.collection('project').find({manager_id : mgr_id});
             cursor.toArray(function (err, doc) {
-                assert.equal(err, null);
+                if (err) {
+                    res.status(500).json({
+                        message: 'failed'
+                    });
+                }
                 res.contentType('application/json');
                 res.write(JSON.stringify(doc));
                 res.end();
