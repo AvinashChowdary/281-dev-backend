@@ -23,6 +23,7 @@ var getAllCustomers = require("../routes/user-route");
 var setNotification = require("../routes/user-route");
 var getNotification = require("../routes/user-route");
 var login = require("../routes/user-route");
+var signup = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -48,6 +49,7 @@ module.exports = {
         app.post('/set_Notification', setNotification);
         app.get('/get_Notification', getNotification);
         app.post('/login', login);
+        app.post('/signup', signup);
         console.log("registered routes");
     }
 };

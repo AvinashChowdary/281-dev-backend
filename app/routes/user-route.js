@@ -24,6 +24,7 @@ var getAllCustomers = require("../controller/get-all-customers.js");
 var setNotificationController = require("../controller/set-notification");
 var getNotificationController = require("../controller/get-notification");
 var loginController = require("../controller/login");
+var signUpController = require("../controller/signup");
 
 router.post("/set_user", setUserController.setUser);
 router.get("/get_users", getUsersController.getUsers);
@@ -46,5 +47,6 @@ router.get("/get_all_customers", getAllCustomers.getCustomers);
 router.post("/set_Notification", setNotificationController.setNotification);
 router.get("/get_Notification", getNotificationController.getNotification);
 router.post("/login", loginController.login);
+router.post("/signup", signUpController.signup);
 
 module.exports = router;
