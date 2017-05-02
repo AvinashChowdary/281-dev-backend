@@ -2,10 +2,8 @@
  * Created by avinash on 4/29/17.
  */
 
-var setUser = require("../routes/user-route");
 var getUsers = require("../routes/user-route");
 var getUserByID = require("../routes/user-route");
-var setUserProfile = require("../routes/user-route");
 var setUserProfileByID = require("../routes/user-route");
 var setCreatePost = require("../routes/user-route");
 var setUpdatePost = require("../routes/user-route");
@@ -27,10 +25,8 @@ var signup = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
-        app.post('/set_user', setUser);
         app.get('/get_users', getUsers);
         app.get('/get_user_by_id', getUserByID);
-        app.post('/set_profile', setUserProfile);
         app.post('/set_profile_by_id', setUserProfileByID);
         app.post('/set_create_post', setCreatePost );
         app.post('/set_update_post', setUpdatePost);
@@ -41,7 +37,6 @@ module.exports = {
         app.post('/get_all_projects', getAllProjects);
         app.post('/create_customer', createCustomer);
         app.post('/update_customer', updateCustomer);
-        app.post('/set_delete_post', setDeletePost);
         app.post('/set_delete_post', setDeletePost);
         app.post('/get_all_posts', getAllPosts);
         app.post('/delete_customer', deleteCustomer);
