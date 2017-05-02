@@ -15,7 +15,6 @@ module.exports = {
             if (err) {
                 console.log('into error of mongo');
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
                     error: err
                 });
             }
@@ -43,7 +42,7 @@ module.exports = {
             db.collection('user_list').findOne({$and:[{ 'username':username},{'password':password}]}, function(err, result) {
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error : err
                     });
                 } else {
                     callback(result);
