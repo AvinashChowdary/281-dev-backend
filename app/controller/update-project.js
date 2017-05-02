@@ -33,14 +33,15 @@ module.exports = {
             console.log(data);
             var string = JSON.stringify(data);
             var objectValue = JSON.parse(string);
-            var id = objectValue['id'];
+            var id = objectValue['project_id'];
             console.log(id);
-            db.collection('project').update({ 'project_id':id}, data, function(err, result) {
+            db.collection('project').update({ _id:ObjectId(id)}, data, function(err, result) {
                 if (err) {
                     res.status(500).json({
                         error: err
                     });
                 }
+                db.close();
                 callback();
             });
         }
