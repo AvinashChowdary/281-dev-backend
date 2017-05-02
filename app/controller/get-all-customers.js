@@ -12,19 +12,32 @@ module.exports = {
     getCustomers: function (req, res) {
         console.log("in get users");
         MongoClient.connect(mongoUrl, function (err, db) {
-            assert.equal(null, err);
-            getUsers(db, function () {
+            if (err) {
+                console.log('into error of mongo');
+                res.status(400).json({
+                    error: err
+                });
+            }
+            getUsers(db, req.body, function () {
                 db.close();
             });
         });
 
-        var getUsers = function (db, callback) {
-            var cursor = db.collection('customer').find();
+        var getUsers = function (db, body, callback) {
+            var string = JSON.stringify(body);
+            var objectValue = JSON.parse(string);
+            var mgr_id = objectValue['manager_id'];
+            var cursor = db.collection('customer').find({manager_id : mgr_id});
             cursor.toArray(function (err, doc) {
-                assert.equal(err, null);
-                res.contentType('application/json');
-                res.write(JSON.stringify(doc));
-                res.end();
+                if (err) {
+                    res.status(500).json({
+                        error: err
+                    });
+                } else {
+                    res.contentType('application/json');
+                    res.write(JSON.stringify(doc));
+                    res.end();
+                }
             });
 
             callback();
