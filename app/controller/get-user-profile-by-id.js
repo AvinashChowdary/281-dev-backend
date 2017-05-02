@@ -5,6 +5,8 @@
 var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
+
 module.exports = {
 
     getUserProfileByID: function (req, res) {
@@ -25,8 +27,8 @@ module.exports = {
             var usersCollection = db.collection('user_profile');
             var string = JSON.stringify(body);
             var objectValue = JSON.parse(string);
-            var id = objectValue['id'];
-            usersCollection.findOne({_id: id}, function (err, doc) {
+            var id = objectValue['access_token'];
+            usersCollection.findOne({_id: ObjectId(id)}, function (err, doc) {
                 res.contentType('application/json');
                 res.write(JSON.stringify(doc));
                 res.end();
