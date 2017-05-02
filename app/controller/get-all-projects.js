@@ -12,7 +12,13 @@ module.exports = {
     getAllProjects: function (req, res) {
         console.log("in get users");
         MongoClient.connect(mongoUrl, function (err, db) {
-            assert.equal(null, err);
+            if (err) {
+                console.log('into error of mongo');
+                res.status(400).json({
+                    error: err
+                });
+            }
+            
             getUsers(db, req.body, function () {
                 db.close();
             });
