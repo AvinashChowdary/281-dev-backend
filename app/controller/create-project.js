@@ -15,7 +15,6 @@ module.exports = {
             if (err) {
                 console.log('into error of mongo');
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
                     error: err
                 });
             }
@@ -23,7 +22,7 @@ module.exports = {
             insertDocument(db, req.body, function (result) {
                 console.log('into insert doc');
                 res.status(200).json({
-                    result:'success'
+                    project_id: result._id
                 });
             });
 
@@ -35,10 +34,10 @@ module.exports = {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
-                callback(result);
+                callback(data);
             })
         }
     }
