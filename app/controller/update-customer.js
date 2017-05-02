@@ -23,7 +23,7 @@ module.exports = {
             insertDocument(db, req.body, function () {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'User added to DB!!'
+                    result: 'success'
                 });
             });
 
@@ -34,14 +34,15 @@ module.exports = {
             console.log(data);
             var string = JSON.stringify(data);
             var objectValue = JSON.parse(string);
-            var id = objectValue['id'];
+            var id = objectValue['customer_id'];
             console.log(id);
-            db.collection('customer').update({ 'id':id}, data, function(err, result) {
+            db.collection('customer').update({ _id:ObjectId(id)}, data, function(err, result) {
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
+                db.close();
                 callback();
             });
         }
