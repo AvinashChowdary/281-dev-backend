@@ -4,6 +4,7 @@
 
 var mongoUrl = 'mongodb://avinash:avinash@ds155727.mlab.com:55727/user';
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
 
@@ -18,9 +19,9 @@ module.exports = {
                 });
             }
 
-            insertDocument(db, req.body, function (result) {
+            insertDocument(db, req.body, function () {
                 res.status(200).json({
-                    post_id: result._id
+                    result: 'success'
                 });
             });
 
@@ -31,14 +32,14 @@ module.exports = {
             var string = JSON.stringify(data);
             var objectValue = JSON.parse(string);
             var id = objectValue['post_id'];
-            db.collection('post').update({ _id:ObjectId(id)}, data, function (err, result) {
+            db.collection('post').update({ _id: ObjectId(id)}, data, function (err, result) {
                 console.log('into db insertion');
                 if (err) {
                     res.status(500).json({
                         error: err
                     });
                 }
-                callback(data);
+                callback();
             })
         }
     }
