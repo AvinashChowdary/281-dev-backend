@@ -14,7 +14,6 @@ module.exports = {
 
             if (err) {
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
                     error: err
                 });
             }

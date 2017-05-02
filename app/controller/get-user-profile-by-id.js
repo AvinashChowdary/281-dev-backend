@@ -10,7 +10,12 @@ module.exports = {
     getUserProfileByID: function (req, res) {
         console.log("in get user by id");
         MongoClient.connect(mongoUrl, function (err, db) {
-            assert.equal(null, err);
+            if (err) {
+                console.log('into error of mongo');
+                res.status(400).json({
+                    error: err
+                });
+            }
             getUserbyId(req.body, db, function () {
                 db.close();
             });
