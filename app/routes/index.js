@@ -45,7 +45,7 @@ module.exports = {
         app.post('/set_delete_post', setDeletePost);
         app.get('/get_all_posts', getAllPosts);
         app.post('/delete_customer', deleteCustomer);
-        app.get('/get_all_customers', getAllCustomers);
+        app.post('/get_all_customers', getAllCustomers);
         app.post('/set_Notification', setNotification);
         app.get('/get_Notification', getNotification);
         app.post('/login', login);

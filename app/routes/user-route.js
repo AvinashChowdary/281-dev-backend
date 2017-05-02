@@ -43,7 +43,7 @@ router.post("/update_customer", updateCustomer.updateCustomer);
 router.post("/set_delete_post", setDeletePostController.setDeletePost);
 router.get("/get_all_posts", getAllPostsController.getAllPosts);
 router.post("/delete_customer", deleteCustomer.deleteCustomer);
-router.get("/get_all_customers", getAllCustomers.getCustomers);
+router.post("/get_all_customers", getAllCustomers.getCustomers);
 router.post("/set_Notification", setNotificationController.setNotification);
 router.get("/get_Notification", getNotificationController.getNotification);
 router.post("/login", loginController.login);
