@@ -24,9 +24,16 @@ module.exports = {
                 res.setHeader('Content-Type', 'application/json');
                 res.contentType('application/json');
                 res.header('Access-Control-Allow-Origin', '*');
-                res.status(200).json({
-                    access_token: result._id
-                });
+                if(result) {
+                    res.status(200).json({
+                        access_token: result._id
+                    });
+                } else {
+                    res.status(401).json({
+                        error: 'unauthorized'
+                    });
+                }
+
             });
 
         });
