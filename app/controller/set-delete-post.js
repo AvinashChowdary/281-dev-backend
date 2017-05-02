@@ -20,7 +20,7 @@ module.exports = {
 
             insertDocument(db, req.body, function () {
                 res.status(200).json({
-                    message: 'User added to DB!!'
+                    result: 'success'
                 });
             });
 
@@ -28,15 +28,21 @@ module.exports = {
 
         var insertDocument = function (db, data, callback) {
             console.log('into insert doc function in delete post');
-            db.collection('post').insertOne(data, function (err, result) {
-                console.log('into db insertion');
+            var string = JSON.stringify(data);
+            var objectValue = JSON.parse(string);
+            var id = objectValue['post_id'];
+            console.log(id);
+            var collection = db.collection('post');
+
+            collection.deleteOne({_id: ObjectId(id)}, function (err, result) {
                 if (err) {
                     res.status(500).json({
-                        message: 'Failed to add in DB!!'
+                        error: err
                     });
                 }
-                callback();
-            })
+                db.close();
+            });
+            callback();
         }
     }
-}
+};
