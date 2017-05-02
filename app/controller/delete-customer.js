@@ -8,14 +8,13 @@ var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
 
-    deleteCustomer: function(req, res) {
+    deleteCustomer: function (req, res) {
 
         MongoClient.connect(mongoUrl, function (err, db) {
 
             if (err) {
                 console.log('into error of mongo');
                 res.status(400).json({
-                    message: 'Connection to database failed !!',
                     error: err
                 });
             }
@@ -23,7 +22,7 @@ module.exports = {
             insertDocument(db, req.body, function () {
                 console.log('into insert doc');
                 res.status(200).json({
-                    message: 'Project deleted from DB!!'
+                    result: 'success'
                 });
             });
 
@@ -34,18 +33,20 @@ module.exports = {
             console.log(data);
             var string = JSON.stringify(data);
             var objectValue = JSON.parse(string);
-            var id = objectValue['id'];
+            var id = objectValue['customer_id'];
             console.log(id);
-            db.collection('customer', function(err, collection) {
-                if(err){
+
+            var collection = db.collection('customer');
+
+            collection.deleteOne({_id: ObjectId(id)}, function (err, result) {
+                if (err) {
                     res.status(500).json({
-                        message: 'Failed to delete project in DB!!'
+                        error: err
                     });
-                } else {
-                    collection.deleteOne({id: id});
                 }
-                callback();
+                db.close();
             });
+            callback();
         }
     }
 };
