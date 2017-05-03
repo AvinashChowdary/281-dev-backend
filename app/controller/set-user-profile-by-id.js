@@ -35,7 +35,7 @@ module.exports = {
             var objectValue = JSON.parse(string);
             var id = objectValue['access_token'];
             console.log(id);
-            db.collection('user_profile').update({ _id:ObjectId(id)}, data, function(err, result) {
+            db.collection('user_profile').update({ _id:ObjectId(id)}, data, {upsert: true}, function(err, result) {
                 if (err) {
                     res.status(500).json({
                         message: 'Failed to add in DB!!'
