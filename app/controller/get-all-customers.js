@@ -29,7 +29,7 @@ module.exports = {
             var string = JSON.stringify(body);
             var objectValue = JSON.parse(string);
             var mgr_id = objectValue['manager_id'];
-            var cursor = db.collection('customer').find({_id : ObjectId(mgr_id)});
+            var cursor = db.collection('customer').find({manager_id : mgr_id});
             cursor.toArray(function (err, doc) {
                 if (err) {
                     res.status(500).json({
