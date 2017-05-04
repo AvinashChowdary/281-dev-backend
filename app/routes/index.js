@@ -22,6 +22,8 @@ var setNotification = require("../routes/user-route");
 var getNotification = require("../routes/user-route");
 var login = require("../routes/user-route");
 var signup = require("../routes/user-route");
+var getChatData = require("../routes/user-route");
+var setChatData = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -45,6 +47,8 @@ module.exports = {
         app.get('/get_Notification', getNotification);
         app.post('/login', login);
         app.post('/signup', signup);
+        app.post('/get_chat_data', getChatData);
+        app.post('/set_chat_data', setChatData);
         console.log("registered routes");
     }
 };

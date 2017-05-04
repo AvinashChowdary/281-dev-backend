@@ -23,6 +23,8 @@ var setNotificationController = require("../controller/set-notification");
 var getNotificationController = require("../controller/get-notification");
 var loginController = require("../controller/login");
 var signUpController = require("../controller/signup");
+var setChatDataController = require("../controller/set-chat-data");
+var getChatDataController = require("../controller/get-chat-data");
 
 router.get("/get_users", getUsersController.getUsers);
 router.get("/get_user_by_id", getUserByIDController.getUserByID);
@@ -44,5 +46,7 @@ router.post("/set_Notification", setNotificationController.setNotification);
 router.get("/get_Notification", getNotificationController.getNotification);
 router.post("/login", loginController.login);
 router.post("/signup", signUpController.signup);
+router.post("/set_chat_data", setChatDataController.setChatData);
+router.post("/get_chat_data", getChatDataController.getChatData);
 
 module.exports = router;
