@@ -30,7 +30,12 @@ module.exports = {
             var objectValue = JSON.parse(string);
             var mgr_id = objectValue['manager_id'];
             var proj_id = objectValue['project_id'];
-            var cursor = db.collection('customer').find({$and:[{ 'manager_id':mgr_id},{'project_id':proj_id}]});
+            var cursor;
+            if(mgr_id && proj_id) {
+                cursor = db.collection('customer').find({$and: [{'manager_id': mgr_id}, {'project_id': proj_id}]});
+            } else if(mgr_id) {
+                cursor = db.collection('customer').find({'manager_id': mgr_id});
+            }
             cursor.toArray(function (err, doc) {
                 if (err) {
                     res.status(500).json({
