@@ -26,8 +26,7 @@ module.exports = {
         var getUsers = function (db, body, callback) {
             var string = JSON.stringify(body);
             var objectValue = JSON.parse(string);
-            var mgr_id = objectValue['manager_id'];
-            var cursor = db.collection('post').find({manager_id : mgr_id});
+            var cursor = db.collection('post').find();
             cursor.toArray(function (err, doc) {
                 if (err) {
                     res.status(500).json({
