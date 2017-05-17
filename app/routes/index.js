@@ -24,6 +24,7 @@ var login = require("../routes/user-route");
 var signup = require("../routes/user-route");
 var getChatData = require("../routes/user-route");
 var setChatData = require("../routes/user-route");
+var customerLogin = require("../routes/user-route");
 
 module.exports = {
     registerRoutes: function(app) {
@@ -49,6 +50,7 @@ module.exports = {
         app.post('/signup', signup);
         app.post('/get_chat_data', getChatData);
         app.post('/set_chat_data', setChatData);
+        app.post ('/customerLogin',customerLogin);
         console.log("registered routes");
     }
 };
